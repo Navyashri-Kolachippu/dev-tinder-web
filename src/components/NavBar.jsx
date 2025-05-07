@@ -10,7 +10,7 @@ const user = useSelector((store)=>store.user);
     </div>
     {
      user &&<div className="flex gap-2 ">
-      <p className="pr-2 m-2"> Welcome {user.firstName}</p>
+      <p className="pr-1 m-2"> Welcome {user.firstName}</p>
       <div className="dropdown dropdown-end">
          <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
           <div className="w-10 rounded-full">
