@@ -2,11 +2,11 @@ import React from 'react'
 
 const Footer = () => {
   return (
-    <footer className="footer sm:footer-horizontal bg-base-500 text-white-content p-10 fixed bottom-0">
+    <footer className="footer sm:footer-horizontal bg-base-500 text-white-content p-10 relative bottom-0">
   <aside>
   <svg width="50"
       height="50"
-      viewBox="0 -0.06 35 40.3" xmlns="http://www.w3.org/2000/svg"><radialGradient id="a" cx=".5" cy="1" r="1" spreadMethod="pad"><stop offset="0" stop-color="#ff7854"/><stop offset="1" stop-color="#fd267d"/></radialGradient><path d="M10.5 16.25c-.06 0-.1 0-.14-.04-1.36-1.8-1.7-4.9-1.78-6.08-.02-.23-.28-.35-.48-.24C3.9 12.24 0 17.82 0 23.2c0 9.27 6.43 17.04 17.5 17.04 10.37 0 17.5-8 17.5-17.03C35 11.4 26.57 3.58 19.06.04c-.2-.1-.42.07-.4.28.98 6.37-.36 13.28-8.17 15.95z" fill="url(#a)"/></svg>
+      viewBox="0 -0.06 35 40.3" xmlns="http://www.w3.org/2000/svg"><radialGradient id="a" cx=".5" cy="1" r="1" spreadMethod="pad"><stop offset="0" stopColor="#ff7854"/><stop offset="1" stopColor="#fd267d"/></radialGradient><path d="M10.5 16.25c-.06 0-.1 0-.14-.04-1.36-1.8-1.7-4.9-1.78-6.08-.02-.23-.28-.35-.48-.24C3.9 12.24 0 17.82 0 23.2c0 9.27 6.43 17.04 17.5 17.04 10.37 0 17.5-8 17.5-17.03C35 11.4 26.57 3.58 19.06.04c-.2-.1-.42.07-.4.28.98 6.37-.36 13.28-8.17 15.95z" fill="url(#a)"/></svg>
     <p>
       Tiner Inc.
       <br />
