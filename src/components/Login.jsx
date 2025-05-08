@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import axios from "axios";
 import { useDispatch } from 'react-redux';
 import { addUser } from '../utils/loginSlice';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate ,Link} from 'react-router-dom';
 import { BASE_URL } from '../utils/constants';
 
 const Login = () => {
@@ -47,6 +47,7 @@ const Login = () => {
                 <input type="text" value={password} onChange={(e)=>{setPassword(e.target.value)}}  className="input" placeholder="Password" />
                 </fieldset>
            </div>
+           <p className="text-red-500">{error}</p>
             <div className="card-actions justify-center">
             <button className="btn btn-primary" onClick={loginHandler}>Login</button>
             </div>
