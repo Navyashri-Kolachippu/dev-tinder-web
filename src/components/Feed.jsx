@@ -29,8 +29,8 @@ useEffect(()=>{
   
 return (
     userFeed && (
-    <div className="flex justify-center my-10">
-        <UserCard user={userFeed.data[0]}/>
+    <div className="flex m-2 p-2">
+      { userFeed?.data?.map(userDetail => <UserCard key={userDetail.id} user={userDetail} hidebuttons={false}/>)}
     </div>)
   )
 }
