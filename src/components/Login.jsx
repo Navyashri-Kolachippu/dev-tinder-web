@@ -21,7 +21,7 @@ const Login = () => {
                 password,
               },
               { withCredentials: true });
-              //console.log(res);
+              //console.log("login",res.data);
            dispatch(addUser(res.data));
            return navigate("/");
           } catch (err) {

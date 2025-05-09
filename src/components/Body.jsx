@@ -14,12 +14,13 @@ const Body = () => {
   const userData=useSelector((store)=>store.user);
 
   const fetchUser=async()=>{
-    if(userData) return null;
+    if (userData && userData._id) return;
     try
     {
       const res = await axios.get(BASE_URL+"profile/view",{
         withCredentials:true,
      });
+     //console.log("body:",res.data);
      dispatch(addUser(res.data));
     }
     catch(err)

@@ -1,7 +1,7 @@
 import React from 'react'
 
 const UserCard = ({user}) => {
-    console.log(user);
+    //console.log(user);
     const {firstName,lastName,photoUrl,age,about,gender}=user;
    
   return (
