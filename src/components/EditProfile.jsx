@@ -93,7 +93,7 @@ const EditProfile = ({userDetails}) => {
             </div>
         </div>
     </div>
-     <UserCard className="" user={{firstName,lastName,age,gender,about,photoUrl}} hidebuttons={true} />
+     <UserCard className="" user={{firstName,lastName,age,gender,about,photoUrl}} hidebuttons={true} acceptRejectbuttons={{ show: false }}/>
     </div>
        { toast && 
         <div className="toast toast-top toast-center">

@@ -30,7 +30,7 @@ useEffect(()=>{
 return (
     userFeed && (
     <div className="flex m-2 p-2">
-      { userFeed?.data?.map(userDetail => <UserCard key={userDetail.id} user={userDetail} hidebuttons={false}/>)}
+      { userFeed?.data?.map(userDetail => <UserCard key={userDetail.id} user={userDetail} hidebuttons={false} acceptRejectbuttons={{ show: false }}/>)}
     </div>)
   )
 }

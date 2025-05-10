@@ -1,8 +1,23 @@
 import React from 'react'
+import { BASE_URL } from '../utils/constants';
+import axios from 'axios';
 
-const UserCard = ({user,hidebuttons}) => {
+const UserCard = ({user,hidebuttons,acceptRejectbuttons}) => {
     //console.log(user);
+    const {show,reqId}=acceptRejectbuttons;
     const {firstName,lastName,photoUrl,age,about,gender}=user;
+
+    const reviewRequest=async(status,id)=>{
+      try
+      {
+        const result = await axios.patch(BASE_URL+"/connections/review",{status,id},{withCredentials:true})
+        console.log(result.data);
+      }
+      catch(err)
+      {
+        console.log(err);
+      }
+    }
    
   return (
     <div className="card bg-base-300 w-96 shadow-sm m-2">
@@ -21,6 +36,13 @@ const UserCard = ({user,hidebuttons}) => {
             <div className="card-actions justify-center my-4">
             <button className="btn btn-primary">Ignore</button>
             <button className="btn btn-secondary">Send Request</button>
+            </div>
+           }
+          { 
+            show &&
+            <div className="card-actions justify-center my-4">
+            <button className="btn btn-primary" onClick={()=>reviewRequest("accepted",reqId)}>Accept</button>
+            <button className="btn btn-secondary" onClick={()=>reviewRequest("rejected",reqId)}>Reject</button>
             </div>
            }
         </div>

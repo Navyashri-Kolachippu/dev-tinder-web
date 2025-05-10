@@ -32,7 +32,7 @@ if (connections.connectedUsersData.length === 0) return <h1 className="flex just
   return (
     connections && (
     <div className="flex m-2 p-2">
-        {connections?.connectedUsersData?.map((conn)=> <UserCard key={conn.firstName} user={conn} hidebuttons={true}/>)}
+        {connections?.connectedUsersData?.map((conn)=> <UserCard key={conn.firstName} user={conn} hidebuttons={true} acceptRejectbuttons={{ show: false }}/>)}
     </div>
     )
   )
