@@ -1,17 +1,26 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { BASE_URL } from '../utils/constants';
 import axios from 'axios';
+import { useDispatch } from 'react-redux';
+import { removeRequest } from '../utils/requestsSlice';
 
 const UserCard = ({user,hidebuttons,acceptRejectbuttons}) => {
     //console.log(user);
     const {show,reqId}=acceptRejectbuttons;
     const {firstName,lastName,photoUrl,age,about,gender}=user;
+    const [toast,setToast]=useState(false);
+    const [statusMessage,setStatusMessage]=useState("");
+    const dispatch=useDispatch();
 
     const reviewRequest=async(status,id)=>{
       try
       {
-        const result = await axios.patch(BASE_URL+"/connections/review",{status,id},{withCredentials:true})
+        const result = await axios.patch(BASE_URL+"connections/review",{status,id},{withCredentials:true})
         console.log(result.data);
+        setToast(true);
+        setStatusMessage(result.data);
+        dispatch(removeRequest(reqId));
+        setTimeout(()=>{setToast(false)},500)
       }
       catch(err)
       {
@@ -20,6 +29,7 @@ const UserCard = ({user,hidebuttons,acceptRejectbuttons}) => {
     }
    
   return (
+    <>
     <div className="card bg-base-300 w-96 shadow-sm m-2">
         <figure className="m-1 p-2 w-[120px] h-[160px]">
             <img
@@ -47,6 +57,22 @@ const UserCard = ({user,hidebuttons,acceptRejectbuttons}) => {
            }
         </div>
     </div>
+    { 
+      toast && 
+      (<div className="toast toast-top toast-center">
+        {
+        statusMessage.includes("success") ?
+        (<div className="alert alert-success">
+            <span>{statusMessage}</span>
+        </div>)
+        :
+        (<div className="alert alert-failure">
+            <span>{statusMessage}</span>
+        </div>)
+        }
+      </div>)
+    }
+    </>
   )
 }
 

@@ -31,7 +31,7 @@ if (requests.length == 0) return <h1 className="flex justify-center m-6 p-2 text
 
   return (
     <div className="flex m-2 p-2">
-        {requests?.map((req) => <UserCard key={req.id} user={req} hidebuttons={true} acceptRejectbuttons={{ show: true, reqId: req.id }}/>)} 
+        {requests?.map((req) => <UserCard key={req?.fromUser?.id} user={req?.fromUser} hidebuttons={true} acceptRejectbuttons={{ show: true, reqId: req?.request?.id }}/>)} 
     </div>
   )
 }
