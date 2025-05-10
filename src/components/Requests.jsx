@@ -12,7 +12,7 @@ const Requests = () => {
         try
         {
             const result= await axios.get(BASE_URL+"connections/getrequests",{ withCredentials: true })
-            console.log(result);
+            //console.log(result);
             dispatch(addRequest(result.data.connectionRequests));
         }
         catch(err)

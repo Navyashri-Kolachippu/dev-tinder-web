@@ -16,7 +16,7 @@ const UserCard = ({user,hidebuttons,acceptRejectbuttons}) => {
       try
       {
         const result = await axios.patch(BASE_URL+"connections/review",{status,id},{withCredentials:true})
-        console.log(result.data);
+        //console.log(result.data);
         setToast(true);
         setStatusMessage(result.data);
         dispatch(removeRequest(reqId));
