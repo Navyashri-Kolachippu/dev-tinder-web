@@ -8,10 +8,15 @@ const connectionSlice=createSlice({
             return action.payload;
         },
         removeConnectionData:(state,action)=>{
+            console.log(action.payload);
+            var newArray= state.filter(x=>x.requestId != action.payload);
+            return newArray;
+        },
+        removeAllConnectionData:(state,action)=>{
             return null;
         }
     }
 })
 
-export const {addConnectionData,removeConnectionData}=connectionSlice.actions;
+export const {addConnectionData,removeConnectionData,removeAllConnectionData}=connectionSlice.actions;
 export default connectionSlice.reducer;
