@@ -6,6 +6,7 @@ import { removeUser } from '../utils/loginSlice';
 import { useNavigate,Link } from 'react-router-dom';
 import { removeFeed } from '../utils/feedSlice';
 import { removeConnectionData } from '../utils/connectionSlice';
+import { removeAllRequests } from '../utils/requestsSlice';
 
 const NavBar = () => {
 const user = useSelector((store)=>store.user);
@@ -19,6 +20,7 @@ const handleLogout=async()=>{
     dispatch(removeUser());
     dispatch(removeFeed());
     dispatch(removeConnectionData());
+    dispatch(removeAllRequests());
     navigate("/login");
   }
   catch(err)
@@ -53,6 +55,11 @@ const handleLogout=async()=>{
           <li>
             <Link to="/connections">
               Connections
+            </Link>
+          </li>
+          <li>
+            <Link to="/requests">
+              Requests
             </Link>
           </li>
           <li onClick={handleLogout}><a>Logout</a></li>
