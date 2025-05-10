@@ -5,6 +5,7 @@ import axios from 'axios';
 import { removeUser } from '../utils/loginSlice';
 import { useNavigate,Link } from 'react-router-dom';
 import { removeFeed } from '../utils/feedSlice';
+import { removeConnectionData } from '../utils/connectionSlice';
 
 const NavBar = () => {
 const user = useSelector((store)=>store.user);
@@ -17,6 +18,7 @@ const handleLogout=async()=>{
     await axios.post(BASE_URL+"logout",{},{withCredentials: true});
     dispatch(removeUser());
     dispatch(removeFeed());
+    dispatch(removeConnectionData());
     navigate("/login");
   }
   catch(err)
@@ -46,10 +48,13 @@ const handleLogout=async()=>{
           <li>
             <Link to="/profile" className="justify-between">
               Profile
-              <span className="badge">New</span>
             </Link>
           </li>
-          <li><a>Settings</a></li>
+          <li>
+            <Link to="/connections">
+              Connections
+            </Link>
+          </li>
           <li onClick={handleLogout}><a>Logout</a></li>
         </ul>
       </div>
