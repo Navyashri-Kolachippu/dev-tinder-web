@@ -20,7 +20,7 @@ const Footer = () => {
           />
         </svg>
         <p>
-          Tiner Inc.
+          Tinder Inc.
           <br />
           It starts with a swipe.
         </p>
