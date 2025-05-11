@@ -4,13 +4,14 @@ import axios from "axios";
 import { useDispatch } from "react-redux";
 import { removeRequest } from "../utils/requestsSlice";
 import { removeConnectionData } from "../utils/connectionSlice";
+import { removeFeed } from "../utils/feedSlice";
 
 const UserCard = ({ user, hidebuttons, acceptRejectbuttons,removebuttons }) => {
   //console.log(user);
   //console.log(acceptRejectbuttons);
   const { show, reqId } = acceptRejectbuttons;
   const { visible, request } = removebuttons;
-  const { firstName, lastName, photoUrl, age, about, gender } = user;
+  const { firstName, lastName, photoUrl, age, about, gender,id } = user;
   const [toast, setToast] = useState(false);
   const [statusMessage, setStatusMessage] = useState("");
   const dispatch = useDispatch();
@@ -41,6 +42,29 @@ const UserCard = ({ user, hidebuttons, acceptRejectbuttons,removebuttons }) => {
     }
   };
 
+  const sendRequest = async(status,id)=>{
+    //console.log(status,id)
+    try
+    {
+       const result = await axios.post(
+        BASE_URL + "Connections/SendRequest",
+        { status, id },
+        { withCredentials: true }
+      );
+      //console.log(result.data);
+      setToast(true);
+      setStatusMessage(result.data);
+      dispatch(removeFeed(user));
+      setTimeout(() => {
+        setToast(false);
+      }, 500);
+    }
+    catch(ex)
+    {
+      console.log(ex);
+    }
+  }
+
   return (
     <>
       <div className="card bg-base-300 w-96 shadow-sm m-2">
@@ -59,8 +83,8 @@ const UserCard = ({ user, hidebuttons, acceptRejectbuttons,removebuttons }) => {
           <p>{about}</p>
           {!hidebuttons && (
             <div className="card-actions justify-center my-4">
-              <button className="btn btn-primary">Ignore</button>
-              <button className="btn btn-secondary">Send Request</button>
+              <button className="btn btn-primary" onClick={() => sendRequest("rejected", id)}>Ignore</button>
+              <button className="btn btn-secondary" onClick={() => sendRequest("interested", id)}>Send Request</button>
             </div>
           )}
           {show && (

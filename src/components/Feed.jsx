@@ -9,8 +9,7 @@ const Feed = () => {
   const userFeed = useSelector((store) => store.feed);
   const dispatch = useDispatch();
   const getUserFeed = async () => {
-    //console.log("userfeed",userFeed.data[0]);
-    if (userFeed) return;
+    if (userFeed?.data?.length) return;
     try {
       const res = await axios(BASE_URL + "Feed/Suggestions", {
         withCredentials: true,
@@ -26,18 +25,24 @@ const Feed = () => {
     getUserFeed();
   }, []);
 
+  if(!userFeed?.data || userFeed.data.length === 0)
+    return (
+      <h1 className="flex justify-center m-6 p-2 text-xl font-bold">
+        {" "}
+        No New Users Found
+      </h1>
+    );
   return (
     userFeed && (
-      <div className="flex m-2 p-2">
-        {userFeed?.data?.map((userDetail) => (
-          <UserCard
-            key={userDetail.id}
-            user={userDetail}
+      <div className="flex m-2 p-2 justify-center">
+        <UserCard
+            key={userFeed?.data[0].id}
+            user={userFeed?.data[0]}
             hidebuttons={false}
             acceptRejectbuttons={{ show: false }}
             removebuttons={{visible:false}}
           />
-        ))}
+
       </div>
     )
   );
