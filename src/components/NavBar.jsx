@@ -12,6 +12,7 @@ const NavBar = () => {
   const user = useSelector((store) => store.user);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+ // console.log(user);
 
   const handleLogout = async () => {
     try {
@@ -32,7 +33,7 @@ const NavBar = () => {
           Dev Tinder 👨‍💻
         </Link>
       </div>
-      {user && (
+      {(user && Object.keys(user).length > 0) && (
         <div className="flex gap-2 ">
           <p className="pr-1 m-2"> Welcome {user.firstName}</p>
           <div className="dropdown dropdown-end">

@@ -15,7 +15,7 @@ const Requests = () => {
         withCredentials: true,
       });
       //console.log(result);
-      dispatch(addRequest(result.data.connectionRequests));
+      dispatch(addRequest(result.data));
     } catch (err) {
       console.log(err);
     }
@@ -34,6 +34,7 @@ const Requests = () => {
         No Connection Requests Found
       </h1>
     );
+
 
   return (
     <div className="flex m-2 p-2">
